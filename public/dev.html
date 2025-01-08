@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue-auth</title>
+</head>
+<body>
+    <style>
+        .cont {
+            display: flex;
+            justify-content: center;
+        }
+        .btn-google {
+            background-color: azure;
+            color: black;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .btn-google:hover {
+            cursor: pointer;
+        }
+    </style>
+    <div class="cont">
+        <button class="btn-google">
+            sign in
+        </button>
+    </div>
+</body>
+
+<script>
+  // Define la función antes de usarla
+  const redirectToGoogle = () => {
+    window.location.href = `http://localhost:3001/auth/google`; // Corrige el protocolo HTTP
+  };
+
+  // Selecciona el botón con la clase btn-google
+  const btnGoogle = document.querySelector(".btn-google");
+
+  // Agrega el event listener al botón
+  btnGoogle.addEventListener('click', redirectToGoogle);
+</script>
+</html>

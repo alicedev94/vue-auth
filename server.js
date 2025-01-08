@@ -4,6 +4,8 @@ const passport = require('passport');
 const session = require('express-session');
 require('./auth'); // Asegúrate de importar el archivo de autenticación
 
+const path = require('path');
+
 const app = express();
 const port = 3001;
 
@@ -12,13 +14,13 @@ app.use(bodyParser.json());
 // Configurar la sesión
 app.use(session({ secret: 'your_secret_key', resave: false, saveUninitialized: true }));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Inicializar Passport.js
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', (req, res)=> {
-  res.send('s');
-});
+
 
 // Ruta de inicio de sesión con Google
 app.get('/auth/google',
